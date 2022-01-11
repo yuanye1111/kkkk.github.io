@@ -284,13 +284,13 @@
              var day3b = zb/50;
              var yesa = da/a;
              var yesb = db/a;
-             var la = yesa*100
-             var lb = yesb*100
-             var x1 = (xb-xa)/xb*100
+             var la = da*100/a
+             var lb = db*100/a
+             var x1 = (xb-xa)*100/xb
              var x2 = (xa-xb)*6
-             var y1 = (yb-ya)/yb*100
+             var y1 = (yb-ya)*100/yb
              var y2 = (ya-yb)*6
-             var z1 = (zb-za)/zb*100
+             var z1 = (zb-za)*100/zb
              var z2 = (za-zb)*6
 
              var last1 = (lastb-lasta)/lastb*100
@@ -298,11 +298,11 @@
              var now1 = (nowb-nowa)/nowb*100
              var now2 = (nowa-nowb)*6
 
-             var day11 = (day1b-day1a)/day1b*100
+             var day11 = (day1b-day1a)*100/day1b
              var day12 = day1a-day1b
-             var day21 = (day2b-day2a)/day2b*100
+             var day21 = (day2b-day2a)*100/day2b
              var day22 = day2a-day2b
-             var day31 = (day3b-day3a)/day3b*100
+             var day31 = (day3b-day3a)*100/day3b
              var day32 = day3a-day3b
 
              if(!/^\d+$/.test(lasta)) {
