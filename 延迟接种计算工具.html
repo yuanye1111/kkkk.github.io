@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)http://z.120ke.net/special/vaccination/?from=singlemessage&isappinstalled=0 -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>延迟接种计算工具</title>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link href="./延迟接种计算工具_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./延迟接种计算工具_files/animate.css" rel="stylesheet">
+    <link href="./延迟接种计算工具_files/index.css" rel="stylesheet">
+    <script src="./延迟接种计算工具_files/jquery.min.js" type="text/javascript"></script>
+    <script src="./延迟接种计算工具_files/toast.js" type="text/javascript"></script>
+</head>
+<body>
+	<div class="content">
+        <div class="vacccontent">
+            <div class="lineones clearfix">
+                <span class="names pull-left">月均新生儿</span>
+                <input type="text" placeholder="" class="pull-right" id="a">
+            </div>
+            <div class="lineones clearfix">
+                <span class="names pull-left">13价接种人数</span>
+                <input type="text" placeholder="" class="pull-right" id="b">
+            </div>
+            <div class="lineones clearfix">
+                <span class="names pull-left">五价口轮接种人数</span>
+                <input type="text" placeholder="" class="pull-right" id="c">
+            </div>
+            <div class="lineones clearfix">
+                <span class="names pull-left">HIB接种人数</span>
+                <input type="text" placeholder="" class="pull-right" id="e">
+            </div>
+            <div class="lineones clearfix">
+                <span class="names pull-left">月门诊天数</span>
+                <input type="text" placeholder="" class="pull-right" id="f">
+            </div>
+            <div class="lineones clearfix">
+                <span class="names pull-left">推迟接种天数</span>
+                <input type="text" placeholder="" class="pull-right" id="g">
+            </div>
+            <div class="lineonestwo clearfix">
+                <span class="names pull-left">情况1：</span>
+                <input type="text" placeholder="五联接种人数" class="pull-right" id="da">
+            </div>
+            <div class="lineonestwo clearfix">
+                <span class="names pull-left">情况2：</span>
+                <input type="text" placeholder="五联接种人数" class="pull-right" id="db">
+            </div>
+            <div class="bottombtn">
+                <span onclick="Post()">计算</span>
+            </div>
+            <div id="reslut" style="display: none;">
+                <div class="grayones">开诊后每天剂次对比</div>
+                <div class="graystart"><img src="./延迟接种计算工具_files/ups.png" alt=""></div>
+                <div class="tablesone">
+                    <table>
+                        <thead>
+                            <tr><td>情况</td>
+                            <td>往常接种</td>
+                            <td>恢复后接种</td>
+                        </tr></thead>
+                        <tbody>
+                            <tr>
+                                <td>情况1</td>
+                                <td><span class="lasta"></span>剂次/天</td>
+                                <td><span class="nowa"></span>剂次/天</td>
+                            </tr>
+                            <tr>
+                                <td>情况2</td>
+                                <td><span class="lastb"></span>剂次/天</td>
+                                <td><span class="nowb"></span>剂次/天</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="grayones">限流情况下接种天数对比</div>
+                <div class="graystart"><img src="./延迟接种计算工具_files/ups.png" alt=""></div>
+                <div class="tablesone">
+                    <table>
+                        <thead>
+                        <tr><td>每日限流</td>
+                        <td>情况1</td>
+                        <td>情况2</td>
+                        </tr></thead>
+                        <tbody>
+                        <tr>
+                            <td>30人</td>
+                            <td><span class="day1a"></span>天</td>
+                            <td><span class="day1b"></span>天</td>
+                        </tr>
+                        <tr>
+                            <td>40人</td>
+                            <td><span class="day2a"></span>天</td>
+                            <td><span class="day2b"></span>天</td>
+                        </tr>
+                        <tr>
+                            <td>50人</td>
+                            <td><span class="day3a"></span>天</td>
+                            <td><span class="day3b"></span>天</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="yesa">
+                                <div class="smiles smileone">
+                                    <p><img src="./延迟接种计算工具_files/smile.png" alt=""></p>
+                                    <p>幸好有五联！</p>
+                                </div>
+                                <div class="smiles smiletwo">
+                                    <p><img src="./延迟接种计算工具_files/smilea.png" alt=""></p>
+                                    <p>我太难了~</p>
+                                </div>
+                            </td>
+                            <td class="yesb">
+                                <div class="smiles smileone">
+                                    <p><img src="./延迟接种计算工具_files/smile.png" alt=""></p>
+                                    <p>幸好有五联！</p>
+                                </div>
+                                <div class="smiles smiletwo">
+                                    <p><img src="./延迟接种计算工具_files/smilea.png" alt=""></p>
+                                    <p>我太难了~</p>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="grayones">门诊量对比</div>
+                <div class="graystart"><img src="./延迟接种计算工具_files/ups.png" alt=""></div>
+                <div class="tablesone">
+                    <table>
+                        <thead>
+                        <tr><td>每日限流</td>
+                        <td>情况1</td>
+                        <td>情况2</td>
+                        </tr></thead>
+                        <tbody>
+                        <tr>
+                            <td>原门诊量</td>
+                            <td><span class="xa"></span>人</td>
+                            <td><span class="xb"></span>人</td>
+                        </tr>
+                        <tr>
+                            <td>延迟门诊量</td>
+                            <td><span class="ya"></span>人</td>
+                            <td><span class="yb"></span>人</td>
+                        </tr>
+                        <tr>
+                            <td>需要接种的总门诊量</td>
+                            <td><span class="za"></span>人</td>
+                            <td><span class="zb"></span>人</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+	</div>
+
+<script language="javascript">
+     function Post()
+     {
+         var a =  $("#a").val();
+         var b =  $("#b").val();
+         var c =  $("#c").val();
+         var da =  $("#da").val();
+         var db =  $("#db").val();
+         var e =  $("#e").val();
+         var f =  $("#f").val();
+         var g =  $("#g").val();
+         if(a==""||!/^\d+$/.test(a)) {
+             showMessage('请正确填写月均新生儿人数',1000,true);
+             $("#a").focus();
+             $("#a").val("");
+             return false;
+        }else if(b==""||!/^\d+$/.test(b)) {
+             showMessage('请正确填写13价接种人数',1000,true);
+             $("#b").focus();
+             $("#b").val("");
+             return false;
+         }else if(c==""||!/^\d+$/.test(c)) {
+             showMessage('请正确填写五价中轮接种人数',1000,true);
+             $("#c").focus();
+             $("#c").val("");
+             return false;
+         }else if(da==""||!/^\d+$/.test(da)) {
+             showMessage('请正确填写五联接种人数',1000,true);
+             $("#da").focus();
+             $("#da").val("");
+             return false;
+         }else if(db==""||!/^\d+$/.test(db)) {
+             showMessage('请正确填写五联接种人数',1000,true);
+             $("#db").focus();
+             $("#db").val("");
+             return false;
+         }else if(e==""||!/^\d+$/.test(e)) {
+             showMessage('请正确填写HIB接种人数',1000,true);
+             $("#e").focus();
+             $("#e").val("");
+             return false;
+         }else if(f==""||!/^\d+$/.test(f)) {
+             showMessage('请正确填写月门诊人数',1000,true);
+             $("#f").focus();
+             $("#f").val("");
+             return false;
+         }else if(g==""||!/^\d+$/.test(g)) {
+             showMessage('请正确填写推迟接种天数',1000,true);
+             $("#g").focus();
+             $("#g").val("");
+             return false;
+         }else {
+             $("#reslut").show();
+             $('html,body').animate({ scrollTop: $("#reslut").offset().top}, 200)
+             var xa = (a-da)*9+da*6+b*3+c*3;
+             var xb = (a-db)*9+db*6+b*3+c*3;
+             var ya = (xa/f)*g;
+             var yb = (xb/f)*g;
+             var za = parseInt(xa)+parseInt(ya);
+             var zb = parseInt(xb)+parseInt(yb);
+             var lasta = xa/f;
+             var lastb = xb/f;
+             var nowa = za/f;
+             var nowb = zb/f;
+             var day1a = za/30;
+             var day1b= zb/30;
+             var day2a = za/40;
+             var day2b = zb/40;
+             var day3a = za/50;
+             var day3b = zb/50;
+             var yesa = da/a;
+             var yesb = db/a;
+             if(!/^\d+$/.test(lasta)) {
+                 $(".lasta").text(parseInt(lasta)+1);
+             }else {
+                 $(".lasta").text(parseInt(lasta));
+             }
+             if(!/^\d+$/.test(lastb)) {
+                 $(".lastb").text(parseInt(lastb)+1);
+             }else {
+                 $(".lastb").text(parseInt(lastb));
+             }
+             if(!/^\d+$/.test(nowa)) {
+                 $(".nowa").text(parseInt(nowa)+1);
+             }else {
+                 $(".nowa").text(parseInt(nowa));
+             }
+             if(!/^\d+$/.test(nowb)) {
+                 $(".nowb").text(parseInt(nowb)+1);
+             }else {
+                 $(".nowb").text(parseInt(nowb));
+             }
+             if(!/^\d+$/.test(day1a)) {
+                 $(".day1a").text(parseInt(day1a)+1);
+             }else {
+                 $(".day1a").text(parseInt(day1a));
+             }
+             if(!/^\d+$/.test(day1b)) {
+                 $(".day1b").text(parseInt(day1b)+1);
+             }else {
+                 $(".day1b").text(parseInt(day1b));
+             }
+             if(!/^\d+$/.test(day2a)) {
+                 $(".day2a").text(parseInt(day2a)+1);
+             }else {
+                 $(".day2a").text(parseInt(day2a));
+             }
+             if(!/^\d+$/.test(day2b)) {
+                 $(".day2b").text(parseInt(day2b)+1);
+             }else {
+                 $(".day2b").text(parseInt(day2b));
+             }
+             if(!/^\d+$/.test(day3a)) {
+                 $(".day3a").text(parseInt(day3a)+1);
+             }else {
+                 $(".day3a").text(parseInt(day3a));
+             }
+             if(!/^\d+$/.test(day3b)) {
+                 $(".day3b").text(parseInt(day3b)+1);
+             }else {
+                 $(".day3b").text(parseInt(day3b));
+             }
+             if(!/^\d+$/.test(ya)) {
+                 $(".ya").text(parseInt(ya)+1);
+             }else {
+                 $(".ya").text(parseInt(ya));
+             }
+             if(!/^\d+$/.test(yb)) {
+                 $(".yb").text(parseInt(yb)+1);
+             }else {
+                 $(".yb").text(parseInt(yb));
+             }
+             if( yesa >=0.4) {
+                 $(".yesa .smileone").show();
+                 $(".yesa .smiletwo").hide();
+             }else {
+                 $(".yesa .smiletwo").show();
+                 $(".yesa .smileone").hide();
+             }
+             if( yesb >=0.4) {
+                 $(".yesb .smileone").show();
+                 $(".yesb .smiletwo").hide();
+             }else {
+                 $(".yesb .smiletwo").show();
+                 $(".yesb .smileone").hide();
+             }
+             if(!/^\d+$/.test(xa)) {
+                 $(".xa").text(parseInt(xa)+1);
+             }else {
+                 $(".xa").text(parseInt(xa));
+             }
+             if(!/^\d+$/.test(xb)) {
+                 $(".xb").text(parseInt(xb)+1);
+             }else {
+                 $(".xb").text(parseInt(xb));
+             }
+             if(!/^\d+$/.test(za)) {
+                 $(".za").text(parseInt(za)+1);
+             }else {
+                 $(".za").text(parseInt(za));
+             }
+             if(!/^\d+$/.test(zb)) {
+                 $(".zb").text(parseInt(zb)+1);
+             }else {
+                 $(".zb").text(parseInt(zb));
+             }
+         }
+     }
+</script>
+
+</body></html>
